@@ -1,28 +1,20 @@
 #include "Auto1.h"
 #include <cstdlib>
 #include <conio2.h>
-
 #include <iostream>
-#include <cstdio>
 using namespace std;
 
-/*
-// CONSTRUCTOR
-*/
+/********/
+/** Auto 1 **/
+/********/
 
 Auto1::Auto1(int vel, int x0, int y0){
-	
-	
 	
 	velocidad = vel;
 	paso=CLOCKS_PER_SEC/velocidad; //cada cuanto se permite mover la pelotita 16 veces por segundo
 	tempo=clock(); //inicializamos tempo con el reloj
-	
-	
-	
 	int Color = (rand()%15)+1;
 	
-
 	matriz[0][0]=0;  color[0][0] = 8;
 	matriz[0][1]=219; color[0][1] = 15;
 	matriz[0][2]=0; color[0][2] = 8;
@@ -44,10 +36,6 @@ Auto1::Auto1(int vel, int x0, int y0){
 	matriz[4][2]=0; color[4][2] = 8;
 	matriz[4][3]=219; color[4][3] = 15;
 	
-	ancho = 5;
-	alto = 4;
-	pasoX = 3;
-	pasoY = 3;
 	x = x0;
 	y = y0;
 	xnueva = x0;
@@ -57,37 +45,6 @@ Auto1::Auto1(int vel, int x0, int y0){
 	dibujar();
 	
 }
-
-/*
-METODO DIBUJAR
-*/
-
-void Auto1::dibujar(){
-	
-	for (int i= 0; i<ancho; i++){
-		for (int k= 0; k<alto; k++){
-			textcolor(color[i][k]);
-			gotoxy(x+i,y+k);
-			cout<<(char) matriz[i][k];
-		}
-	}
-}
-
-/*
-METODO BORRAR
-*/
-
-void Auto1::borrar(){
-	
-	for (int i= 0; i<ancho+1; i++){
-		for (int k= 0; k<alto+1; k++){
-			textcolor(color[i][k]);	
-			gotoxy(x+i,y+k);
-			cout<<" ";
-		}
-	}
-}
-
 
 /// El metodo update lo tiene cada objeto pero es 
 //// distinto en cada caso, por lo que se debe implementar 
@@ -100,32 +57,24 @@ bool Auto1::update(){
 		
 		switch(tecla){
 		case (72): { // arriba
-				if (y - alto > minLimitY ){borrar(); y = y - pasoY; moves = true;} break;
-			}
-		case (80):{ // abajo
-				if (y < maxLimitY){borrar(); y = y + pasoY; moves = true;} break;
-			}
-		case (77):{ // derecha
-				if (x + ancho < maxLimitX){borrar(); x = x + pasoX; moves = true;} break;
-			}
-		case (75):{ // izquierda
-				if (x - ancho > minLimitX){borrar(); x = x - pasoX; moves = true;} break;
-			}
+			if (y - alto > minLimitY ){borrar(); y = y - pasoY; moves = true;} break;
 		}
-			
-	if(moves) {
-		dibujar();
-	}
-}	
+		case (80):{ // abajo
+			if (y < maxLimitY){borrar(); y = y + pasoY; moves = true;} break;
+		}
+		case (77):{ // derecha
+			if (x + ancho < maxLimitX){borrar(); x = x + pasoX; moves = true;} break;
+		}
+		case (75):{ // izquierda
+			if (x - ancho > minLimitX){borrar(); x = x - pasoX; moves = true;} break;
+		}
+		}
+		
+		if(moves) {
+			dibujar();
+		}
+	}	
 	
 }
 
-void Auto1::setLimit(int x0, int x1,int y0, int y1){
-	maxLimitX = x1;
-	maxLimitY = y1;
-	minLimitX = x0;
-	minLimitY = y0;
-	
-}
-	
 

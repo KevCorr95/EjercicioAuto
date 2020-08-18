@@ -5,13 +5,18 @@
 #include "Auto3.h"
 using namespace std;
 
+/********/
+/** JUEGO **/
+/********/
+
+
 Juego::Juego(){
 	
 	auto1 = Auto1(4,4,4);
 	auto1.setLimit(0,130,0,45);
 	auto2 = Auto2(10,14,14);
 	auto2.setLimit(0,130,0,45);
-	auto3 = Auto3(10,30,30);
+	auto3 = Auto3(10,30,10);
 	auto3.setLimit(0,130,0,45);
 }
 
@@ -19,7 +24,7 @@ int Juego::checkCollision(){
 	
 	int x1 = auto1.getX();
 	int y1 = auto1.getY();
-
+	
 	int x2 = auto2.getX();
 	int y2 = auto2.getY();
 	
@@ -37,9 +42,9 @@ int Juego::checkCollision(){
 	   if(x1 > (x3 - ancho) && x1 < (x3 + ancho) && 
 		  y1 > (y3 - alto) && y1 < (y3 + alto))
 	   {return 3;}
-	   
-	   
-	   return 0;
+		  
+		  
+		  return 0;
 }
 
 
@@ -52,7 +57,7 @@ void Juego::play(){
 	En este ejemplo el metodo update dira cuando cortar cuando
 	el contador llegue a 0 lanzara un false
 	**/
-
+	
 	bool flag = true;
 	while(flag) {
 		
@@ -67,8 +72,8 @@ void Juego::play(){
 			auto3.Colorear();
 		}	
 		
-		}
-		
+	}
+	
 	
 	
 }

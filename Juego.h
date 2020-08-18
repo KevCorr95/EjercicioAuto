@@ -5,6 +5,10 @@
 #include "Auto3.h"
 
 
+/********/
+/** Clase Juego **/
+/********/
+
 class Juego{
 	
 	int teclas[4];
@@ -12,14 +16,13 @@ class Juego{
 	Auto2 auto2;
 	Auto3 auto3;
 	int checkCollision();
-
+	
 	
 public:
 	Juego();
 	void play();
 	
 };
-
 
 #endif
 

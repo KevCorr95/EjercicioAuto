@@ -4,6 +4,9 @@
 #include <iostream>
 using namespace std;
 
+/********/
+/** Auto 3 **/
+/********/
 
 /*
 // CONSTRUCTOR
@@ -11,15 +14,11 @@ using namespace std;
 
 Auto3::Auto3(int vel, int x0, int y0){
 	
-	
-	
 	velocidad = vel;
 	paso=CLOCKS_PER_SEC/velocidad; //fps
 	tempo=clock(); //inicializamos tempo con el reloj
 	cambio = true;
 	colorAuto = (rand()%15)+1;
-	
-	
 	
 	matriz[0][0]=0;  color[0][0] = 8;
 	matriz[0][1]=219; color[0][1] = 15;
@@ -41,58 +40,20 @@ Auto3::Auto3(int vel, int x0, int y0){
 	matriz[4][1]=219; color[4][1] = 15;
 	matriz[4][2]=0; color[4][2] = 8;
 	matriz[4][3]=219; color[4][3] = 15;
-	
-	
-	ancho = 5;
-	alto = 4;
-	pasoX = 3;
-	pasoY = 3;
 	x = x0;
 	y = y0;
 	xnueva = x0;
 	ynueva = y0;
 	
-	
 	dibujar();
 	
 }
-
-/*
-METODO DIBUJAR
-*/
-
-void Auto3::dibujar(){
-	
-	for (int i= 0; i<ancho; i++){
-		for (int k= 0; k<alto; k++){
-			textcolor(color[i][k]);
-			gotoxy(x+i,y+k);
-			cout<<(char) matriz[i][k];
-		}
-	}
-}
-
-/*
-METODO BORRAR
-*/
-
-void Auto3::borrar(){
-	
-	for (int i= 0; i<ancho+1; i++){
-		for (int k= 0; k<alto+1; k++){
-			textcolor(color[i][k]);	
-			gotoxy(x+i,y+k);
-			cout<<" ";
-		}
-	}
-}
-
 
 /// El metodo update lo tiene cada objeto pero es 
 //// distinto en cada caso, por lo que se debe implementar 
 /// en cada clase
 void Auto3::Colorear(){
-
+	
 	colorAuto = (rand()%15)+1;
 	
 	color[1][0] = colorAuto;
@@ -112,13 +73,6 @@ void Auto3::update(){
 	}
 }
 
-void Auto3::setLimit(int x0, int x1,int y0, int y1){
-	maxLimitX = x1;
-	maxLimitY = y1;
-	minLimitX = x0;
-	minLimitY = y0;
-	
-}
 
 
 
